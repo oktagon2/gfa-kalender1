@@ -1,18 +1,19 @@
-// new Date('01.09.2023');
-// date.toLocaleString('default', { month: 'long', year: 'numeric'});
-// console.log(month);
 
 var body = document.getElementById('calendar');
 var dateInput = document.getElementById('date-input');
 var goButton = document.getElementById('go-button');
 
+function incrementDate( date) {
+    date.setDate(date.getDate()+ 1);
+}
+
 goButton.onclick = function () {
-    //alert( "Das Datum ist: " + dateInput.value);
 
     // Table Element dem Body hinzufügen
     const tableElement = document.createElement('table');
     body.appendChild(tableElement);
 
+    // Titelzelle (z.B. "Oktober 2023") erstellen
     var tableRowElement = document.createElement('tr');
     const tableHeadElement = document.createElement('th');
     tableHeadElement.setAttribute('colspan', '7');
@@ -26,26 +27,15 @@ goButton.onclick = function () {
     tableElement.appendChild(tableRowElement);
 
 
+    // Zeile mit "Montag" ... "Sonntag" erstellen
     let myDate = new Date(dateInput.value);
 
+    // Nächsten "Montag" suchen
     do {
-        //console.log( myDate.toLocaleString('en', { weekday: 'long'}));
-        myDate.setDate(myDate.getDate() + 1);
-
-        tableRowElement = document.createElement('tr');
-        var tableCellElementMo = document.createElement('td');
-        /*textElementMo = document.createTextNode( myDate.toLocaleString('de', { weekday: 'long'}));
-        
-        tableCellElementMo.appendChild( textElementMo);
-        tableRowElement.appendChild( tableCellElementMo);*/
-
-
-
-
+        // myDate.setDate(myDate.getDate() + 1);
+        incrementDate( myDate);
     }
     while (myDate.getDay() != 1);
-
-    //tableElement.appendChild(tableRowElement);
 
     do {
 
