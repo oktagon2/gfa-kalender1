@@ -47,41 +47,38 @@ goButton.onclick = function () {
         tableCellElement.appendChild(textElement);
         tableRowElement.appendChild(tableCellElement);
         myDate.setDate(myDate.getDate() + 1);
-        
-
     }
     while (myDate.getDay() != 1);
 
-    myDate = new Date(dateInput.value);
 
+    myDate = new Date(dateInput.value);
 
     var firstDay = new Date(myDate.getFullYear(), myDate.getMonth(), 1);
     var lastDay = new Date(myDate.getFullYear(), myDate.getMonth() + 1, 0);
 
     tableRowElement = document.createElement('tr');
 
-    //var dayOfWeek = myDate.toLocaleString('de', { weekday: 'long'});
     var startOfMonth = 0;
     var firstWeekday = firstDay.getDay();
     var lastDayOldMonth = new Date(myDate.getFullYear(), myDate.getMonth(), 0);
-
-    //lastDayOldMonth = lastDayOldMonth.setDate(lastDayOldMonth.getDay());
 
     while (lastDayOldMonth.getDay() != 1) {
         lastDayOldMonth.setDate(lastDayOldMonth.getDate() - 1);
     }
 
-    firstDay = new Date(myDate.getFullYear(), myDate.getMonth(), 1);
-
-
-
+    /* 
+    Man hat den Eindruck, dass ab hier reagiert und nicht agiert wurde.
+    Natürlich kann man codieren und testen bis es funktioniert.
+    Trotzdem sollte man die Übersicht behalten. Es braucht eine Strategie (oder einen Opearationsplan), 
+    die beschreibt wie man das Ziel erreichen möchte und die sollte auch verständlich
+    dokumentiert sein.
+    */
+    
     do {
 
         if (firstDay.getDay() == 0) {
 
             do {
-
-                textElement = document.createTextNode(firstWeekday.toLocaleString('de', { weekday: 'long' }));
                 var tableCellElement = document.createElement('td');
                 textElement = document.createTextNode(lastDayOldMonth.toLocaleString('de', { day: 'numeric' }));
                 tableCellElement.appendChild(textElement);
