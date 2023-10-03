@@ -37,6 +37,8 @@ goButton.onclick = function () {
     }
     while (myDate.getDay() != 1);
 
+    tableRowElement = document.createElement('tr');
+    tableElement.appendChild(tableRowElement);
     do {
 
         var tableCellElement = document.createElement('td');
@@ -45,7 +47,7 @@ goButton.onclick = function () {
         tableCellElement.appendChild(textElement);
         tableRowElement.appendChild(tableCellElement);
         myDate.setDate(myDate.getDate() + 1);
-        tableElement.appendChild(tableRowElement);
+        
 
     }
     while (myDate.getDay() != 1);
