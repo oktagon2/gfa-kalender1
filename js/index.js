@@ -50,6 +50,33 @@ goButton.onclick = function () {
     }
     while (myDate.getDay() != 1);
 
+    // Kalendertage auffüllen
+    myDate = new Date(dateInput.value);
+
+    var firstDate = new Date(myDate.getFullYear(), myDate.getMonth(), 1);
+    while (firstDate.getDay() != 1) {
+        firstDate.setDate(firstDate.getDate() - 1);
+    } 
+
+    var lastDate = new Date(myDate.getFullYear(), myDate.getMonth() + 1, 0);
+    while (lastDate.getDay() != 0) {
+        lastDate.setDate(lastDate.getDate() + 1);
+    } 
+
+    myDate = firstDate;
+    var tableCellElement= null;
+    while (myDate<= lastDate) {
+        if( myDate.getDay() == 1) {
+            tableRowElement = document.createElement('tr');
+            tableElement.appendChild(tableRowElement);
+        }
+        tableCellElement = document.createElement('td');
+        textElement = document.createTextNode(myDate.toLocaleString('de', { day: 'numeric' }));
+        tableCellElement.appendChild(textElement);
+        tableRowElement.appendChild(tableCellElement);   
+        myDate.setDate(myDate.getDate() + 1);     
+    }
+
 }
 
 window.onload = function () {
